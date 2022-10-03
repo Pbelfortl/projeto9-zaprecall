@@ -1,14 +1,16 @@
 import styled from "styled-components"
 import questionAnswers from "./questionsAnswers"
 import Cards from "./Cards"
-import { useState } from "react"
 
-export default function QuestionCard () {
+export default function QuestionBox ({concluded, setConcluded}) {
 
     return (
         <CardBox>
-            {questionAnswers.map((Q) => 
+            {questionAnswers.map((Q,I) => 
                 (<Cards 
+                    key={I}
+                    concluded={concluded}
+                    setConcluded={setConcluded}
                     question={Q.question}
                     answer={Q.answer}
                     number={Q.number}
@@ -20,7 +22,7 @@ export default function QuestionCard () {
 
 
 const CardBox = styled.div`
-    height:375px;
+    height:425px;
     overflow-y:scroll;
 
 `

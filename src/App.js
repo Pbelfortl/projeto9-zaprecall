@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import HomePage from "./HomePage"
 import RecallScreen from "./RecallScreen"
 

@@ -1,29 +1,26 @@
 import logo from "./assets/img/logo.png"
 import styled from "styled-components"
+import { useState } from "react"
 
-let mostrar = 'none'
 export default function Start() {
+
+    let [show, setShow] = useState('flex')
 
     return (
 
-        <HomeScreen>
+        <HomeScreen show={show}>
             <img src={logo} alt="Logo" />
             ZapRecall
-            <button onClick={() => changeShow()}>Iniciar Recall!</button>
+            <button data-identifier="start-btn" onClick={() => setShow('none')}>Iniciar Recall!</button>
         </HomeScreen>
     )
-
-    function changeShow () {
-        mostrar = 'none'
-        console.log(mostrar)
-    }
 }
 
 const HomeScreen = styled.div`
     background-color: #FB6B6B;
     width: 375px;
     height: 667px;
-    display: ${mostrar};
+    display: ${props => props.show};
     flex-direction: column;
     justify-content:center;
     align-items: center;
@@ -48,6 +45,7 @@ const HomeScreen = styled.div`
         cursor:pointer;
         font-family: 'Recursive', cursive;
         border:none;
+        box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     }
 
     img {

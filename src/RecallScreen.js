@@ -1,28 +1,26 @@
 import { useState } from "react"
 import styled from "styled-components"
 import logo from "./assets/img/logo.png"
-import QuestionCard from "./QuestionCard.js"
+import QuestionBox from "./QuestionBox.js"
+import questionsAnswers from "./questionsAnswers"
 
 
 export default function RecallScreen() {
 
-    const [questions, setQuestions] = useState()
+    const [concluded, setConcluded] = useState(0)
     
-
     return (
 
-        <QuestionsBox>
+        <Container>
             <Logo>
-                <img src={logo}></img>
+                <img src={logo} alt=''></img>
                 ZapRecall
             </Logo>
-            <QuestionCard />
+            <QuestionBox concluded={concluded} setConcluded={setConcluded} />
             <BottomBox>
-                <RedButton></RedButton>
-                <OrangeButton></OrangeButton>
-                <GreenButton></GreenButton>
+                {concluded}/{questionsAnswers.length} Concluídos
             </BottomBox>
-        </QuestionsBox>
+        </Container>
         
     )
 }
@@ -43,10 +41,11 @@ const Logo = styled.div`
    }
 `
 
-const QuestionsBox = styled.div`
+const Container = styled.div`
+    box-sizing: border-box;
     background-color: #FB6B6B;
     width: 375px;
-    height: 637px;
+    height: 667px;
     display: flex;
     flex-direction: column;
     display:flex;
@@ -62,28 +61,6 @@ const BottomBox= styled.div`
     justify-content:center;
     display:flex;
     align-items:center;
-`
-const RedButton = styled.button`
-    width:85px;
-    height:37px;
-    border-radius:5px;
-    background-color:#FF3030;
-    border:none;
-    margin:5px;
-`
-const OrangeButton = styled.button`
-    width:85px;
-    height:37px;
-    border-radius:5px;
-    background-color:#FF922E;
-    border:none;
-    margin:5px;
-`
-const GreenButton = styled.button`
-    width:85px;
-    height:37px;
-    border-radius:5px;
-    background-color:#2FBE34;
-    border:none;
-    margin:5px;
+    font-family: 'Recursive', cursive;
+    font-size: 18px;
 `
