@@ -6,7 +6,8 @@ import iconeQuase from "./assets/img/icone_quase.png"
 import iconeErro from "./assets/img/icone_erro.png"
 import { useState } from "react"
 
-export default function Cards ({question, answer, number, concluded, setConcluded}) {
+export default function Cards ({index, question, answer, number, concluded, setConcluded, checkImg, setCheckImg}) {
+
 
     const [cardInfo, setCardInfo] = useState(number)
     const [image, setImage] = useState(seta)
@@ -43,7 +44,10 @@ export default function Cards ({question, answer, number, concluded, setConclude
             setCardInfo(number)
             setImage(iconeCerto)
             setColor("#2FBE34")
-            setConcluded(concluded+1)            
+            setConcluded(concluded+1)
+            checkImg[index] = (<img src={iconeCerto} alt=''/>)
+            setCheckImg(checkImg)
+            console.log(checkImg)
         }
     }
 
@@ -53,6 +57,8 @@ export default function Cards ({question, answer, number, concluded, setConclude
             setImage(iconeQuase)
             setColor("#FF922E")
             setConcluded(concluded+1)
+            checkImg[index] = (<img src={iconeQuase} alt='' />)
+            setCheckImg(checkImg)
         }
     }
 
@@ -62,9 +68,10 @@ export default function Cards ({question, answer, number, concluded, setConclude
             setImage(iconeErro)
             setColor("#FF3030")
             setConcluded(concluded+1)
+            checkImg[index] = (<img src={iconeErro} alt=''/>)
+            setCheckImg(checkImg)
         }
     }
-
 }
 
 const ImgBox = styled.div `

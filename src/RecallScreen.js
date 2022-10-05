@@ -4,10 +4,11 @@ import logo from "./assets/img/logo.png"
 import QuestionBox from "./QuestionBox.js"
 import questionsAnswers from "./questionsAnswers"
 
-
 export default function RecallScreen() {
 
     const [concluded, setConcluded] = useState(0)
+    const [checkImg, setCheckImg] = useState([])
+
     
     return (
 
@@ -16,9 +17,12 @@ export default function RecallScreen() {
                 <img src={logo} alt=''></img>
                 ZapRecall
             </Logo>
-            <QuestionBox concluded={concluded} setConcluded={setConcluded} />
+            <QuestionBox concluded={concluded} setConcluded={setConcluded} checkImg={checkImg} setCheckImg={setCheckImg} />
             <BottomBox>
                 {concluded}/{questionsAnswers.length} Concluídos
+                <CheckCounter>
+                    {checkImg}
+                </CheckCounter>
             </BottomBox>
         </Container>
         
@@ -60,7 +64,17 @@ const BottomBox= styled.div`
     border: solid 1px #FB6B6B;
     justify-content:center;
     display:flex;
+    flex-direction: column;
     align-items:center;
     font-family: 'Recursive', cursive;
     font-size: 18px;
+
+`
+const CheckCounter =styled.div `
+    display:flex;
+    padding: 3px;
+
+    img{
+        padding:2px;
+    }
 `
